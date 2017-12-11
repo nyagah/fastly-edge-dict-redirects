@@ -5,23 +5,31 @@
   CSV file and to programmatically write (via API) the URLs into an Edge Dictionary
   on Fastly. The redirects will immediately take effect on Fastly after a source and 
   destination URL has been uploaded.
+  
+  There are 2 main Go files
+  
+  1.) create-edge-dict.go -> To create a new Edge Dictionary
+  2.) add-csv-to-edge-dict.go -> To upload new redirects
 
   # Installation
   
 
   **Go Code**
+  
+  Download the library into your $GOPATH/src folder:
 
 ```
-  $ go get github.com/sethvargo/go-fastly/fastly
+  $ go get github.com/nyagah/fastly-edge-dict-redirects
 ```
 
   Ensure the GOPATH environment variable is set to your workspace directory.
   Place this file in the "src" directory under your workspace directory. See more here:
   https://github.com/golang/go/wiki/SettingGOPATH#unix-systems
 
-  Compile the Go code
+  Compile the Go code:
  
  ```
+  $ go build -o create-edge-dict create-edge-dict.go
   $ go build -o add-csv-to-edge-dict add-csv-to-edge-dict.go
 ```
 
@@ -62,7 +70,9 @@
   }
 ```
   
-  Usage to add new redirects:
+  #Usage
+  
+  To add new redirects run the command below:
 
 ```
   $ ./add-csv-to-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME> <CVS-FILE-NAME>
