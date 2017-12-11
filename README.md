@@ -9,7 +9,8 @@
   There are 2 main Go files
   
   *1.) create-edge-dict.go -> To create a new Edge Dictionary*
-  *2.) add-csv-to-edge-dict.go -> To upload new redirects*
+  
+  *2.) add-csv-to-edge-dict.go -> To upload new redirects from CVS file*
 
   # Installation
   
@@ -72,7 +73,13 @@
   
   #Usage
   
-  To add new redirects run the command below:
+  To create a new edge dictionary run the command below:
+  
+  ```
+  $ ./create-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME>
+  ```
+  
+  To add new redirects to an edge dictionary run the command below:
 
 ```
   $ ./add-csv-to-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME> <CVS-FILE-NAME>
