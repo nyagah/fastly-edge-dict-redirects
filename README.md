@@ -2,25 +2,29 @@
  
   This workflow describes how to create URL redirects using an Edge Dictionary on Fastly. 
   The source and destination URLs are defined in a CSV file. Go is used to read in the
-  CSV file and to programmatically write (via API) the URLs into an Edge Dictionary
+  CSV file and to programmatically (via API) write the URLs into an Edge Dictionary
   on Fastly. The redirects will immediately take effect on Fastly after a source and 
   destination URL has been uploaded.
   
-  There are 2 main Go files
+  There are 2 main Go files:
   
-  *1.) create-edge-dict.go -> To create a new Edge Dictionary*
-  
-  *2.) add-csv-to-edge-dict.go -> To upload new redirects from CVS file*
+  1.) *create-edge-dict.go -> To create a new Edge Dictionary*  
+  2.) *add-csv-to-edge-dict.go -> To upload new redirects from CVS file*
 
-  # Installation
+  # Installation  
   
 
   **Go Code**
   
-  Download the library into your $GOPATH/src folder:
+  Download the Go source code into the $GOPATH/src folder:
 
 ```
-  $ go get github.com/nyagah/fastly-edge-dict-redirects
+  $ git clone git@github.com:nyagah/fastly-edge-dict-redirects.git
+```
+  Download the Fastly Go client library into the $GOPATH/src folder:
+
+```
+  $ go get github.com/sethvargo/go-fastly/fastly
 ```
 
   Ensure the GOPATH environment variable is set to your workspace directory.
@@ -32,12 +36,12 @@
  ```
   $ go build -o create-edge-dict create-edge-dict.go
   $ go build -o add-csv-to-edge-dict add-csv-to-edge-dict.go
-```
+```  
 
 
   **VCL Code**
 
-  Add the code below at the top of vcl_recv:
+  Add the code below at the top of `vcl_recv`:
 
   ```vcl
   set req.http.redir_location = table.lookup(<EDGE-DICT-NAME>, req.url, "")
@@ -47,7 +51,7 @@
    }
  ```
 
-  Add the code below at the top of vcl_error:
+  Add the code below at the top of `vcl_error`:
 
   ```vcl
   # Permanent Redirects
@@ -71,7 +75,7 @@
   }
 ```
   
-  #Usage
+  # Usage
   
   To create a new edge dictionary run the command below:
   
@@ -87,8 +91,8 @@
 
 
   # NOTES
-  1.) Edge Dictionaries have a limit of 1000 entires. Please reach out to Fastly to have that limit increased.
-  2.) Dictionary item keys are limited 256 characters and values are limited to 8000 characters
-  3.) Dictionary item keys are case sensitive
-  4.) Event logs don't exist for Edge Dictionary changes
+  1.) Edge Dictionaries have a limit of 1000 entires. Please reach out to Fastly to have that limit increased  
+  2.) Dictionary item keys are limited 256 characters and values are limited to 8000 characters  
+  3.) Dictionary item keys are case sensitive  
+  4.) Event logs don't exist for Edge Dictionary changes  
 
