@@ -7,6 +7,7 @@
   destination URL has been uploaded.
 
   # Installation
+  
 
   **Go Code**
 
@@ -24,11 +25,12 @@
   $ go build -o add-csv-to-edge-dict add-csv-to-edge-dict.go
 ```
 
+
   **VCL Code**
 
   Add the code below at the top of vcl_recv:
 
-  ```
+  ```vcl
   set req.http.redir_location = table.lookup(<EDGE-DICT-NAME>, req.url, "")
  
   if (req.http.redir_location != "" ) {
@@ -38,7 +40,7 @@
 
   Add the code below at the top of vcl_error:
 
-  ```
+  ```vcl
   # Permanent Redirects
   #
   if (obj.status == 801) {
@@ -66,6 +68,10 @@
   $ ./add-csv-to-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME> <CVS-FILE-NAME>
 ```
 
+
   # NOTES
   1.) Edge Dictionaries have a limit of 1000 entires. Please reach out to Fastly to have that limit increased.
+  2.) Dictionary item keys are limited 256 characters and values are limited to 8000 characters
+  3.) Dictionary item keys are case sensitive
+  4.) Event logs don't exist for Edge Dictionary changes
 
