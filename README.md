@@ -8,8 +8,8 @@
   
   There are 2 main Go files
   
-  1.) create-edge-dict.go -> To create a new Edge Dictionary
-  2.) add-csv-to-edge-dict.go -> To upload new redirects
+  *1.) create-edge-dict.go -> To create a new Edge Dictionary*
+  *2.) add-csv-to-edge-dict.go -> To upload new redirects*
 
   # Installation
   
