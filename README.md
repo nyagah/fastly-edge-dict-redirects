@@ -84,9 +84,9 @@
   ```
   
   To add new redirects to an edge dictionary run the command below:
-
+  
 ```
-  $ ./add-csv-to-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME> <CVS-FILE-NAME>
+$ ./add-csv-to-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME> <CVS-FILE-NAME>
 ```
 
 
