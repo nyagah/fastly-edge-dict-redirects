@@ -9,7 +9,7 @@
 // Commands:
 //
 // To compile: go build -o create-edge-dict create-edge-dict.go
-// To run: ./create-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME>
+// To run: ./create-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DICT-NAME>
 //
 //
 
@@ -27,7 +27,7 @@ func main() {
    // Check User Input.
    //
    if len(os.Args) != 4 { 
-     log.Fatal("\nWrong arguments count: \n\n\t Usage is: ./create-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME>\n")
+     log.Fatal("\nWrong arguments count: \n\n\t Usage is: ./create-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DICT-NAME>\n")
    } 
 
   
