@@ -9,7 +9,7 @@
   There are 2 main Go files:
   
   1.) *create-edge-dict.go -> To create a new Edge Dictionary (shouldn't be used that often)*  
-  2.) *add-csv-to-edge-dict.go -> To upload new redirects from CVS file*
+  2.) *add-csv-to-edge-dict.go -> To upload new redirects from CSV file*
 
   # Installation  
   
@@ -86,7 +86,7 @@
   2.) To add new redirects to an edge dictionary run the command below:
   
 ```
-$ ./add-csv-to-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DICT-NAME> <CVS-FILE-PATH>
+$ ./add-csv-to-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DICT-NAME> <CSV-FILE-PATH>
 ```
 
 
