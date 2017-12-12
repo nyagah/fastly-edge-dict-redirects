@@ -10,7 +10,7 @@
 // Commands:
 //
 // To compile: go build -o add-csv-to-edge-dict add-csv-to-edge-dict.go
-// To run: ./add-csv-to-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DICT-NAME> <CVS-FILE-PATH>
+// To run: ./add-csv-to-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DICT-NAME> <CSV-FILE-PATH>
 //
 //
 
@@ -31,7 +31,7 @@ func main() {
    // Check User Input.
    //
    if len(os.Args) != 5 { 
-     log.Fatal("\nWrong arguments count: \n\n\t Usage is: ./add-csv-to-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DICT-NAME> <CVS-FILE-PATH>\n")
+     log.Fatal("\nWrong arguments count: \n\n\t Usage is: ./add-csv-to-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DICT-NAME> <CSV-FILE-PATH>\n")
    } 
 
   
