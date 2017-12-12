@@ -9,7 +9,7 @@
   There are 2 main Go files:
   
   1.) *create-edge-dict.go -> To create a new Edge Dictionary (shouldn't be used that often)*  
-  2.) *add-csv-to-edge-dict.go -> To upload new redirects from CSV file*
+  2.) *add-csv-to-edge-dict.go -> To upload new URL redirects from CSV file to Edge Dictionary*
 
   # Installation  
   
