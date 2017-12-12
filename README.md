@@ -1,20 +1,22 @@
   # Overview
  
-  This workflow describes how to create URL redirects using an Edge Dictionary on Fastly. 
-  The source and destination URLs are defined in a CSV file. Go is used to read in the
-  CSV file and to programmatically (via API) write the URLs into an Edge Dictionary
-  on Fastly. The redirects will immediately take effect on Fastly after a source and 
-  destination URL has been uploaded.
+  This workflow describes how to deploy URL redirects using an Edge Dictionary on Fastly. 
+  The source and destination URLs are defined in a CSV file and Go is used to read in the
+  file and to programmatically (via API) write the URLs into an Edge Dictionary
+  on Fastly. The redirects will immediately take effect after the API call to add a URL pair
+  is complete.
   
   There are 2 main Go files:
   
-  1.) *create-edge-dict.go -> To create a new Edge Dictionary*  
+  1.) *create-edge-dict.go -> To create a new Edge Dictionary (shouldn't be used that often)*  
   2.) *add-csv-to-edge-dict.go -> To upload new redirects from CVS file*
 
   # Installation  
   
 
   **Go Code**
+  
+  Create a workspace directory and set GOPATH environment variable to point to it. See more [here]( https://github.com/golang/go/wiki/SettingGOPATH#unix-systems). In this workspace directory create a directory called `src`. Then do the following:
   
   Download the Go source code into the $GOPATH/src folder:
 
@@ -25,13 +27,9 @@
 
 ```
   $ go get github.com/sethvargo/go-fastly/fastly
-```
+```  
 
-  Ensure the GOPATH environment variable is set to your workspace directory.
-  Place this file in the "src" directory under your workspace directory. See more here:
-  https://github.com/golang/go/wiki/SettingGOPATH#unix-systems
-
-  Compile the Go code:
+  Compile the Go code $GOPATH/src/fastly-edge-dict-redirects folder:
  
  ```
   $ go build -o create-edge-dict create-edge-dict.go
@@ -44,6 +42,8 @@
   Add the code below at the top of `vcl_recv`:
 
   ```vcl
+  # NOTE: Make sure to replace <EDGE-DICT-NAME> with actual name of Edge Dictionary
+  #
   set req.http.redir_location = table.lookup(<EDGE-DICT-NAME>, req.url, "")
  
   if (req.http.redir_location != "" ) {
@@ -77,7 +77,7 @@
   
   # Usage
   
-  To create a new edge dictionary run the command below:
+  To create a new edge dictionary run the command below (shouldn't be used that often):
   
   ```
   $ ./create-edge-dict <SECRET-API-TOKEN> <SERVICE-ID> <EDGE-DICT-NAME>
