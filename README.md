@@ -92,7 +92,7 @@ $ ./add-csv-to-edge-dict <FASTLY-SECRET-API-TOKEN> <FASTLY-SERVICE-ID> <EDGE-DIC
 
   # NOTES
   1.) `add-csv-to-edge-dict` assumes the source URL and destination URL are on the same row in the CVS file  
-  2.) `add-csv-to-edge-dict` assumes the source URL and destination URL are on the 1st and 3rd columns respectively  
+  2.) `add-csv-to-edge-dict` assumes the source URL and destination URL are on the 1st and 2nd columns respectively  
   3.) Edge Dictionaries have a limit of 1000 entries/redirects. Please reach out to Fastly to have that limit increased    
   4.) Dictionary entry keys are limited 256 characters and values are limited to 8000 characters  
   5.) Dictionary entry keys are case sensitive  
