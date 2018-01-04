@@ -96,7 +96,7 @@ func main() {
        } else if len(entry[0]) == 0 {  // 1st column is source URL
          fmt.Println("Key is empty")
          continue
-       } else if len(entry[2]) == 0 { // 3rd column is destination URL
+       } else if len(entry[1]) == 0 { // 2rd column is destination URL
          fmt.Println("Value is empty")
          continue
        }
